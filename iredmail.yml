@@ -17,14 +17,21 @@
   remote_user: '{{admin_username}}'
   tasks:
 
-  - import_tasks: common.yml
+  # - import_tasks: common.yml
 
   - name: download iredmail package
     unarchive:
       src: https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.9.tar.bz2
       dest: /
       remote_src: yes
-      
+
+  - name: Change Folder name
+    shell: mv /iRedMail-0.9.9 /iredmail
+
+  - name: change script
+    file:
+      path: /iredmail/iRedMail.sh
+      mode: 750
 
 
 
