@@ -25,9 +25,10 @@
       2: No (default)\n"
       private: no
       default: 2 
+      
   roles:
-    - { role: common , tags: "common"}  
-    - {role: iredmail,tags: "iredmail"}
+    # - { role: common , tags: "common"}  
+    # - {role: iredmail,tags: "iredmail"}
     - {role: end,tags: "end"}
 
 
