@@ -1,0 +1,39 @@
+# 服务器前置任务(ubuntu使用 Centos项目注释或删掉)
+- name: iredmail
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: False
+  pre_tasks:
+    - name: Install Python
+      raw: sudo apt update && sudo apt-get -y install python
+      ignore_errors: yes
+
+# 核心任务
+
+- name: iredmail
+  hosts: all
+  become: yes
+  become_method: sudo
+  vars_prompt:
+    - name: 'init'
+      prompt: "After installation Operating System initialization? \n \n
+      ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! \n
+      !! Warning ⚠ :Please select carefully, initialization will delete public key or user information !! \n
+      ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !  \n\n
+      1: Yes\n
+      2: No (default)\n"
+      private: no
+      default: 2 
+  roles:
+    - { role: common , tags: "common"}  
+    - {role: iredmail,tags: "iredmail"}
+    - {role: end,tags: "end"}
+
+
+
+
+    
+
+
+                                                                                                    
