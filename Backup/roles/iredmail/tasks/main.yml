@@ -1,15 +1,13 @@
 - name: download iredmail package
   unarchive:
-    src: "{{iredmail_download_url}}"
+    src: https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.9.tar.bz2
     dest: /root
     remote_src: yes
 
 - name: Change Folder name
-  shell: mv /root/iRedMail* /root/iredmail
+  shell: mv /root/iRedMail-0.9.9 /root/iredmail
 
 - name: change script
   file:
     path: /root/iredmail/iRedMail.sh
     mode: 750
-
-# TODO: 未完成状态？
